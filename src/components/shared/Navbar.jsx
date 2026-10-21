@@ -18,8 +18,9 @@ export default function Navbar() {
     const handleLogout = () => {
         clearToken();
         setMe(null);
+        //solved 
         navigate("/");
-        window.location.reload();
+        // window.location.reload();
     };
 
     useEffect(() => {
