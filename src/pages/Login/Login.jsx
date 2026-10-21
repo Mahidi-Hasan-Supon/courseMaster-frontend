@@ -68,7 +68,7 @@ export default function Login() {
                         <div className="grid grid-cols-2 gap-2">
                             <button
                                 type="button"
-                                onClick={() => handleQuickLogin("admin@coursemaster.com", "admin123")}
+                                onClick={() => handleQuickLogin("admincoursemaster@gmail.com", "admin123")}
                                 className="btn btn-xs btn-outline btn-primary gap-1 font-semibold"
                             >
                                 <ShieldCheck className="w-3 h-3" /> Admin Fill
