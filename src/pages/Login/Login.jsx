@@ -138,7 +138,7 @@ export default function Login() {
                   type="button"
                   onClick={() => {
                     const token =
-                      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYzFmMzdlNjYwMDZmMWRjYmI1YjUyNSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc5MTA5ODU4OH0.vL3Hj-fEGVbouM-cZ9RtMIpaCU5ugRwsNqaKyYdxdNY";
+                      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZDkwNGE5ZDI2OTkwNjk2Yzg1MTg5YyIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc5MjY2NDcxMCwiZXhwIjoxNzk1MjU2NzEwfQ._B73dan7ko_VUNlkllhj-0USdCcqOlCVEgitFppsjgg";
                     localStorage.setItem("token", token);
                     localStorage.setItem("user_token", token);
                     localStorage.setItem("dev_bypass", "true");
