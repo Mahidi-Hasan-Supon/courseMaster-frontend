@@ -289,7 +289,7 @@ export default function StudentDashboard() {
                         })()}
                       </div>
                       <div className="text-right">
-                        {/* <p className="text-2xl sm:text-3xl font-bold text-primary">
+                        <p className="text-2xl sm:text-3xl font-bold text-primary">
                           {Math.min(
                             100,
                             Math.max(
@@ -298,18 +298,7 @@ export default function StudentDashboard() {
                             ),
                           )}
                           %
-                        </p> */}
-                        <progress
-                          className="progress progress-primary w-full h-4"
-                          value={Math.min(
-                            100,
-                            Math.max(
-                              0,
-                              Number(enrollment.progress?.percent) || 0,
-                            ),
-                          )}
-                          max={100}
-                        />
+                        </p>
                       </div>
                     </div>
                     <progress

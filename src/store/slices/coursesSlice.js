@@ -54,6 +54,10 @@ const coursesSlice = createSlice({
         clearCurrentCourse: (state) => {
             state.currentCourse = null;
         },
+        //add now
+        setCurrentCourse: (state, action) => {
+            state.currentCourse = action.payload;
+        },
         clearError: (state) => {
             state.error = null;
         },

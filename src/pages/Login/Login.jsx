@@ -123,7 +123,8 @@ export default function Login() {
                   onClick={() => {
                     // const token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYzFmMzdlNjYwMDZmMWRjYmI1YjUyNiIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzkxMDk4NTg4fQ.4s3Ygh9GtTper2SB8byNILxPSxZ8y3pO-WyFupmQ0Ws";
                     //solved
-                    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZDkwNGFhZDI2OTkwNjk2Yzg1MTg5ZiIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzkyNjEzNDIyLCJleHAiOjE3OTUyMDU0MjJ9.LFjTZsG-YvdYpvsuXTAn6oDb6fd-o6KSeZDGBSQAzto"
+                    const token =
+                      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZGEyNTI2MDkxNDA4MWVmMDY5OTgyZSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzkyNjg4MjgwLCJleHAiOjE3OTUyODAyODB9.CFqvpDg9dvRuDpLdbfIEfALV0ru_uZg-mIOhZTuZzuU";
                     localStorage.setItem("token", token);
                     localStorage.setItem("user_token", token);
                     localStorage.setItem("dev_bypass", "true");
@@ -137,8 +138,10 @@ export default function Login() {
                 <button
                   type="button"
                   onClick={() => {
-                    const token =
-                      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZDkwNGE5ZDI2OTkwNjk2Yzg1MTg5YyIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc5MjY2NDcxMCwiZXhwIjoxNzk1MjU2NzEwfQ._B73dan7ko_VUNlkllhj-0USdCcqOlCVEgitFppsjgg";
+                    // const token =
+                    //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYzFmMzdlNjYwMDZmMWRjYmI1YjUyNSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc5MTA5ODU4OH0.vL3Hj-fEGVbouM-cZ9RtMIpaCU5ugRwsNqaKyYdxdNY";
+                    //solved
+                    const token =                     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZGEyNTI2MDkxNDA4MWVmMDY5OTgyYyIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc5MjY4ODY3NiwiZXhwIjoxNzk1MjgwNjc2fQ.Fd3r4jqCmWNss21EQcbiTyjrMbMNSeL0J1Dlpvsj_x8";
                     localStorage.setItem("token", token);
                     localStorage.setItem("user_token", token);
                     localStorage.setItem("dev_bypass", "true");
