@@ -1,8 +1,22 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { clearCurrentCourse, fetchCourseById } from "../../../store/slices/coursesSlice";
+import {
+  clearCurrentCourse,
+  fetchCourseById,
+} from "../../../store/slices/coursesSlice";
 import { useNavigate, useParams } from "react-router-dom";
 import { updateCourseAsync } from "../../../store/slices/adminSlice";
+
+const toLocalDateTimeInput = (date) => {
+  if (!date) return "";
+
+  const d = new Date(date);
+  if (Number.isNaN(d.getTime())) return "";
+
+  const offset = d.getTimezoneOffset() * 60000;
+
+  return new Date(d.getTime() - offset).toISOString().slice(0, 16);
+};
 
 export default function EditCourse() {
   const { id } = useParams();
@@ -41,10 +55,20 @@ export default function EditCourse() {
         category: currentCourse.category || "",
         tags: (currentCourse.tags || []).join(", "),
         batches: currentCourse.batches || [],
-        syllabus: currentCourse.syllabus || [],
+        // syllabus: currentCourse.syllabus || [],
+
+        syllabus: (currentCourse.syllabus || []).map((mod) => ({
+          ...mod,
+          lessons: (mod.lessons || []).map((lesson) => ({
+            ...lesson,
+            liveClassDate: lesson.liveClassDate
+              ? toLocalDateTimeInput(lesson.liveClassDate)
+              : "",
+          })),
+        })),
       });
     }
-  }, [currentCourse ]);
+  }, [currentCourse]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -120,36 +144,44 @@ export default function EditCourse() {
         ...b,
         startDate: b.startDate ? new Date(b.startDate) : undefined,
       })),
-      syllabus: form.syllabus,
+      //  syllabus: form.syllabus,
+
+      syllabus: form.syllabus.map((mod) => ({
+        ...mod,
+        lessons: (mod.lessons || []).map((lesson) => ({
+          ...lesson,
+          liveClassDate: lesson.liveClassDate
+            ? new Date(lesson.liveClassDate).toISOString()
+            : "",
+        })),
+      })),
     };
 
-//     const res = await dispatch(updateCourseAsync({ id, data: payload }));
+    //     const res = await dispatch(updateCourseAsync({ id, data: payload }));
 
-//     if (updateCourseAsync.fulfilled.match(res)) {
-//       await dispatch(fetchCourses());
-//       navigate("/admin/courses");
-//     }
-//   };
-const res = await dispatch(
-    updateCourseAsync({ id, data: payload })
-);
+    //     if (updateCourseAsync.fulfilled.match(res)) {
+    //       await dispatch(fetchCourses());
+    //       navigate("/admin/courses");
+    //     }
+    //   };
+    const res = await dispatch(updateCourseAsync({ id, data: payload }));
 
-if (updateCourseAsync.fulfilled.match(res)) {
+    if (updateCourseAsync.fulfilled.match(res)) {
+      await dispatch(fetchCourseById(id));
 
-    await dispatch(fetchCourseById(id));
+      dispatch(clearCurrentCourse());
 
-    dispatch(clearCurrentCourse());
+      navigate("/admin/courses");
+    }
 
-    navigate("/admin/courses");
-}
-
-  if (detailLoading) {
-    return (
-      <div className="flex justify-center py-12">
-        <span className="loading loading-spinner loading-lg"></span>
-      </div>
-    );
-  }}
+    if (detailLoading) {
+      return (
+        <div className="flex justify-center py-12">
+          <span className="loading loading-spinner loading-lg"></span>
+        </div>
+      );
+    }
+  };
 
   return (
     <div className="max-w-4xl w-full">
@@ -478,8 +510,8 @@ if (updateCourseAsync.fulfilled.match(res)) {
                                             (les, lIdx) => {
                                               if (lIdx === lesIdx) {
                                                 const {
-                                                //   liveClassLink,
-                                                //   liveClassDate,
+                                                  //   liveClassLink,
+                                                  //   liveClassDate,
                                                   ...rest
                                                 } = les;
                                                 return rest;
@@ -536,7 +568,7 @@ if (updateCourseAsync.fulfilled.match(res)) {
                                   placeholder="https://meet.google.com/xxx-xxxx-xxx or https://zoom.us/j/xxxxx"
                                   className="input input-bordered input-sm w-full"
                                 />
-                                <input
+                                {/* <input
                                   type="datetime-local"
                                   value={
                                     lesson?.liveClassDate
@@ -573,6 +605,36 @@ if (updateCourseAsync.fulfilled.match(res)) {
                                       },
                                     );
                                     setForm({ ...form, syllabus: newSyllabus });
+                                  }}
+                                  className="input input-bordered input-sm w-full"
+                                /> */}
+
+                                <input
+                                  type="datetime-local"
+                                  value={lesson?.liveClassDate || ""}
+                                  onChange={(e) => {
+                                    const value = e.target.value;
+
+                                    setForm((prev) => ({
+                                      ...prev,
+                                      syllabus: prev.syllabus.map(
+                                        (mod, mIdx) =>
+                                          mIdx === modIdx
+                                            ? {
+                                                ...mod,
+                                                lessons: mod.lessons.map(
+                                                  (les, lIdx) =>
+                                                    lIdx === lesIdx
+                                                      ? {
+                                                          ...les,
+                                                          liveClassDate: value,
+                                                        }
+                                                      : les,
+                                                ),
+                                              }
+                                            : mod,
+                                      ),
+                                    }));
                                   }}
                                   className="input input-bordered input-sm w-full"
                                 />
@@ -631,7 +693,7 @@ if (updateCourseAsync.fulfilled.match(res)) {
                                             (les, lIdx) => {
                                               if (lIdx === lesIdx) {
                                                 const {
-                                                //   assignmentPrompt,
+                                                  //   assignmentPrompt,
                                                   ...rest
                                                 } = les;
                                                 return rest;
