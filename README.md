@@ -1,137 +1,313 @@
-# CourseMaster - Frontend
-Live Link: https://course-master4981.netlify.app/
+# 🎓 CourseMaster — Online Learning Platform
 
-Video link: https://drive.google.com/file/d/1vjMrBxr0-7xqjxMX2EBEBw30D_av1pOu/view
+A modern, responsive online learning platform built with **React and Vite**, designed to make online education accessible, interactive, and user-friendly.
 
-A modern E-learning platform frontend built with React, Redux Toolkit, and Tailwind CSS.
+CourseMaster provides a learning environment where students can explore courses, manage their learning activities, and access educational content through a clean interface. It also includes administrative features for managing platform content and users.
 
-Admin email: admin@coursemaster.com
-Pass: admin123
+🔗 **Live Demo:** [CourseMaster Frontend](https://course-master-front-end-ten.vercel.app/)  
+🔗 **Backend API:** [CourseMaster Backend](https://course-master-backend-nu.vercel.app/)
 
-## Project Name & Description
+---
 
-**CourseMaster** is a full-featured E-learning platform where students can browse, purchase, and consume courses. The frontend provides an intuitive interface for students to enroll in courses, watch video lectures, complete assignments, and take quizzes. Administrators can manage courses, track enrollments, review assignments, and view analytics through a dedicated admin dashboard.
+## 📌 Table of Contents
 
-This is the frontend application of the CourseMaster platform, built with modern React technologies and responsive design principles.
+- [Overview](#-overview)
+- [Features](#-features)
+- [Technology Stack](#-technology-stack)
+- [Project Structure](#-project-structure)
+- [Getting Started](#-getting-started)
+- [Environment Variables](#-environment-variables)
+- [Available Scripts](#-available-scripts)
+- [Deployment](#-deployment)
+- [Future Improvements](#-future-improvements)
+- [Author](#-author)
+- [License](#-license)
 
-## Technology Stack
+---
 
-- **React 19** - UI library
-- **Vite** - Build tool and dev server
-- **Redux Toolkit** - State management
-- **React Router DOM** - Routing
-- **Tailwind CSS + DaisyUI** - Styling
-- **Axios** - HTTP client
+## 🚀 Overview
 
-## Installation
+CourseMaster is a frontend application for an online learning platform. It uses a component-based architecture to organize pages, layouts, routes, and reusable UI elements.
 
-1. Clone the repository
-2. Navigate to the frontend directory:
-   ```bash
-   cd course-master-frontend
-   ```
+The application communicates with a separate backend API to retrieve and manage platform data.
 
-3. Install dependencies:
-   ```bash
-   npm install
-   ```
+The project focuses on:
 
-4. Create a `.env` file in the root directory (see `.env.example`)
+- Responsive user interfaces
+- Student and administrator experiences
+- Course discovery and course details
+- Protected routes and authentication
+- Reusable React components
+- Optimized production builds
 
-5. Start the development server:
-   ```bash
-   npm run dev
-   ```
+---
 
-6. Build for production:
-   ```bash
-   npm run build
-   ```
+## ✨ Features
 
-## Environment Variables
+### 👨‍🎓 Student Experience
 
-Create a `.env` file in the root directory with the following variables (see `.env.example` for reference):
+- Browse available courses
+- View course details
+- Access the student dashboard
+- Access course learning pages
+- Navigate through course-related content
+- Access assignments and other learning activities where supported by the backend
+
+### 🛠️ Admin Dashboard
+
+- Admin dashboard and overview
+- Manage courses
+- Create and edit courses
+- Manage users
+- View enrollments
+- Manage assignments
+- View analytics
+- Manage video classes
+
+### 🔐 Authentication & Routing
+
+- Login and registration pages
+- Protected routes for authorized users
+- Role-based access through route protection
+- React Router navigation
+- Custom 404 Not Found page
+
+### 🎨 User Interface
+
+- Responsive layouts
+- Reusable UI components
+- Theme support
+- Loading indicators for lazy-loaded pages
+- CourseMaster-branded loading screen
+
+### ⚡ Performance
+
+- Vite-powered development and production builds
+- Lazy loading for dashboard and administrative pages
+- Code splitting for improved loading performance
+- Axios-based API communication
+
+---
+
+## 🧰 Technology Stack
+
+| Technology | Purpose |
+|---|---|
+| React | UI development |
+| Vite | Development server and build tool |
+| JavaScript | Application logic |
+| React Router DOM | Client-side routing |
+| Redux | State management |
+| Axios | HTTP requests and API integration |
+| Tailwind CSS | Styling |
+| DaisyUI | UI styling components |
+| Lucide React | Icons |
+| Vercel | Frontend deployment |
+
+**Backend:** Node.js, Express.js, MongoDB, and Mongoose are used by the separate CourseMaster backend.
+
+---
+
+## 📁 Project Structure
+
+```text
+courseMaster_Frontend/
+├── public/
+├── src/
+│   ├── components/
+│   │   └── common/
+│   │       └── PageLoader.jsx
+│   ├── contexts/
+│   ├── layouts/
+│   │   └── MainLayout.jsx
+│   ├── pages/
+│   │   ├── Home/
+│   │   ├── Courses/
+│   │   ├── CousrseDetails/
+│   │   ├── CoursePlayer/
+│   │   ├── Login/
+│   │   ├── Register/
+│   │   ├── student/
+│   │   ├── admin/
+│   │   └── NotFound/
+│   ├── routes/
+│   │   └── ProtectedRoute.jsx
+│   ├── services/
+│   ├── store/
+│   ├── utils/
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+├── .env.example
+├── index.html
+├── package.json
+├── vercel.json
+└── README.md
+```
+
+*Note: The structure above is a guide based on the current project context. Adjust it if your actual folders differ.*
+
+---
+
+## ⚙️ Getting Started
+
+### Prerequisites
+
+Make sure you have installed:
+
+- [Node.js](https://nodejs.org/)
+- npm
+- Git
+
+### 1. Clone the Repository
+
+```bash
+git clone YOUR_FRONTEND_GITHUB_REPOSITORY_URL
+```
+
+Navigate to the project directory:
+
+```bash
+cd courseMaster_Frontend
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Configure Environment Variables
+
+Create a `.env` file in the project root:
 
 ```env
-# Backend API Base URL
+VITE_API_BASE_URL=https://course-master-backend-nu.vercel.app/api
+```
+
+For local backend development, use:
+
+```env
 VITE_API_BASE_URL=http://localhost:5000/api
-# For production, use your deployed backend URL:
-# VITE_API_BASE_URL=http://localhost:5000/api/api
 ```
 
-**Required Variables:**
-- `VITE_API_BASE_URL` - The base URL of the backend API (required)
+Make sure the environment variable name matches the one used in your Axios configuration.
 
-## Project Structure
+### 4. Start the Development Server
 
-```
-src/
-├── components/          # Reusable UI components
-│   ├── CourseCard/     # Course listing components
-│   └── shared/         # Shared components (Navbar, Footer, Logo)
-├── layouts/            # Layout components
-├── pages/              # Page components
-│   ├── admin/          # Admin dashboard pages
-│   ├── CoursePlayer/   # Course video player
-│   ├── CousrseDetails/ # Course details page
-│   ├── Home/           # Home page with course listing
-│   ├── Login/          # Login page
-│   ├── Register/       # Registration page
-│   └── student/        # Student dashboard
-├── routes/              # Route protection components
-├── services/           # API service functions
-├── store/              # Redux store and slices
-└── utils/              # Utility functions
+```bash
+npm run dev
 ```
 
-## Features
+Vite will display the local development URL in your terminal, usually:
 
-### Public Features
-- Browse courses with pagination, search, sorting, and filtering
-- View detailed course information
-- User registration and login
+```text
+http://localhost:5173
+```
 
-### Student Features
-- Enroll in courses
-- Watch video lectures (YouTube integration)
-- Mark lessons as complete
-- Track learning progress
-- Submit assignments (text or Google Drive links)
-- Take quizzes with immediate score feedback
-- View enrolled courses dashboard
+### 5. Build for Production
 
-### Admin Features
-- Create, update, and delete courses
-- Add course syllabus (modules, lessons, videos, assignments, quizzes)
-- Manage course batches
-- View all enrollments
-- Review and grade student assignments
-- Filter enrollments by course/student
-- Filter assignments by status
+```bash
+npm run build
+```
 
-## API Integration
+The optimized production files will be generated in the `dist/` directory.
 
-The frontend communicates with the backend API. All API endpoints are documented in the backend README.
+### 6. Preview the Production Build
 
-### Key API Endpoints Used:
+```bash
+npm run preview
+```
 
-- **Authentication**: `/api/auth/register`, `/api/auth/login`, `/api/auth/me`
-- **Courses**: `/api/courses` (GET all, GET by ID)
-- **Enrollments**: `/api/enrollments/:courseId` (POST), `/api/enrollments/my` (GET)
-- **Assignments**: `/api/assignments/submit` (POST), `/api/assignments/my` (GET), `/api/assignments/stats` (GET)
-- **Quizzes**: `/api/quizzes/submit` (POST), `/api/quizzes/my` (GET), `/api/quizzes/stats` (GET)
-- **Admin**: `/api/admin/courses`, `/api/admin/enrollments`, `/api/admin/assignments`, `/api/admin/analytics`
+---
 
-For complete API documentation with request/response formats, see [courseMaster_Backend/README.md](../courseMaster_Backend/README.md).
+## 🔑 Environment Variables
 
-## Development
+| Variable | Description |
+|---|---|
+| `VITE_API_BASE_URL` | Base URL of the CourseMaster backend API |
 
-- Development server runs on `http://localhost:5173` (default Vite port)
-- Hot Module Replacement (HMR) is enabled
-- ESLint is configured for code quality
+Example:
 
-## Deployment
+```env
+VITE_API_BASE_URL=https://course-master-backend-nu.vercel.app/api
+```
 
-The frontend can be deployed to:
-- **Netlify**
+**Important:** Never put passwords, database credentials, JWT secrets, or other private backend secrets in frontend environment variables. Vite exposes variables prefixed with `VITE_` to the client-side application.
 
+---
+
+## 📜 Available Scripts
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Start the Vite development server |
+| `npm run build` | Create a production build |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run linting, if configured in `package.json` |
+
+---
+
+## 🌐 Deployment
+
+The frontend is deployed on Vercel.
+
+**Live application:**  
+https://course-master-front-end-ten.vercel.app/
+
+### Deploy with Vercel
+
+1. Push the frontend code to GitHub.
+2. Import the repository into Vercel.
+3. Select Vite as the framework if it is not detected automatically.
+4. Configure the production environment variable:
+
+   ```env
+   VITE_API_BASE_URL=https://course-master-backend-nu.vercel.app/api
+   ```
+
+5. Confirm the build settings:
+
+   - **Build Command:** `npm run build`
+   - **Output Directory:** `dist`
+   - **Install Command:** `npm install`
+
+6. Deploy the project.
+
+For client-side routing, ensure the Vercel rewrite configuration serves `index.html` for frontend routes.
+
+### Backend Configuration
+
+The backend must allow requests from the deployed frontend origin through its CORS configuration:
+
+```text
+https://course-master-front-end-ten.vercel.app
+```
+
+---
+
+## 🛣️ Future Improvements
+
+- Improve accessibility and keyboard navigation
+- Add more comprehensive loading and error states
+- Improve automated testing
+- Enhance course search and filtering
+- Continue improving responsive design and performance
+
+---
+
+## 👨‍💻 Author
+
+**Mahidi Hasan Supon**
+
+- GitHub: [@mahidi-hasan-supon](https://github.com/Mahidi-Hasan-Supon)
+
+---
+
+## 📄 License
+
+No license has been specified yet. Add a `LICENSE` file if you intend to publish the project under an open-source license.
+
+---
+
+⭐ If you find this project interesting, consider starring the repository!
